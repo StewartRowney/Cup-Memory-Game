@@ -1,4 +1,4 @@
-package models;
+package learn.game.models;
 
 public class Guess {
 

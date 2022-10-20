@@ -1,12 +1,13 @@
-package domain;
+package learn.game.domain;
 
-import models.Cup;
-import models.Guess;
+import learn.game.models.Cup;
+import learn.game.models.Guess;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 @Service
 public class CupGameService {
@@ -16,7 +17,7 @@ public class CupGameService {
     Random rand = new Random();
 
 
-    private void setUp(int numberOfCups) {
+    public boolean setUp(int numberOfCups) {
 
         int hiddenBall = rand.nextInt(1, numberOfCups + 1);
         isOver = false;
@@ -28,12 +29,16 @@ public class CupGameService {
 
         cups.get(hiddenBall- 1).setHasBall(true);
 
+
+        return cups.size() == numberOfCups;
     }
 
-    private boolean guess(Guess incomingGuess) {
+    public boolean guess(Guess incomingGuess) {
 
-        if (cups.get(incomingGuess.getGuess()).getHasBall()) {
+        if (cups.get(incomingGuess.getGuess() - 1).getHasBall()) {
+            cups.clear();
             isOver = true;
+
         }
 
         return isOver;

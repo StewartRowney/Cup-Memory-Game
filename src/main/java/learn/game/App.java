@@ -1,4 +1,5 @@
-import models.Game;
+package learn.game;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
